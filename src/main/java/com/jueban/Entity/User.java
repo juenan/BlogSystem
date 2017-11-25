@@ -1,6 +1,7 @@
 package com.jueban.Entity;
 
 import com.jueban.Enum.Gender;
+import com.jueban.Enum.UserType;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -38,4 +39,6 @@ public class User {
     @Column
     public String phoneNumber;
 
+    @Column
+    public UserType type;
 }
