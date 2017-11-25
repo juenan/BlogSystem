@@ -17,6 +17,9 @@ public class Blog {
     @Column
     public String content;
 
+    @Column
+    public String title;
+
     @ManyToOne
     public User createBy;
 
