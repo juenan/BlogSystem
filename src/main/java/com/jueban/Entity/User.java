@@ -3,11 +3,7 @@ package com.jueban.Entity;
 import com.jueban.Enum.Gender;
 import com.jueban.Enum.UserType;
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -27,6 +23,7 @@ public class User {
     @Column
     public String password;
 
+    @Enumerated(EnumType.STRING)
     @Column
     public Gender gender;
 
@@ -39,6 +36,10 @@ public class User {
     @Column
     public String phoneNumber;
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     @Column
     public UserType type;
+
+
 }
