@@ -1,6 +1,10 @@
 package com.jueban.Entity;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,19 +13,21 @@ import java.util.Date;
 public class Blog {
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     @Column
-    public Date createTime;
+    private Date createTime;
 
     @Column
-    public String content;
+    @Type(type = "text")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private String content;
 
     @Column
-    public String title;
+    private String title;
 
     @ManyToOne
-    public User createBy;
+    private User createBy;
 
 
 }

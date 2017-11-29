@@ -16,8 +16,8 @@
         <br/>
         <textarea name="content" cols="80" rows="10"></textarea>
         <br/>
+        <input type="hidden" th:value="${#authentication.name}" name="username"/>
         <input type="submit" value="提交"/>
-        <input type="hidden" sec:authentication="name" name="username"/>
     </form>
 </div>
 

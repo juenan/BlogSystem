@@ -12,34 +12,34 @@ public class User {
 
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     @Column
-    public String name;
+    private String name;
 
     @Column
-    public Date registerTime;
+    private Date registerTime;
 
     @Column
-    public String password;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     @Column
-    public Gender gender;
+    private Gender gender;
 
     @Column
-    public Date birthday;
+    private Date birthday;
 
     @Column
-    public String email;
+    private String email;
 
     @Column
-    public String phoneNumber;
+    private String phoneNumber;
 
     @Basic
     @Enumerated(EnumType.STRING)
     @Column
-    public UserType type;
+    private UserType type;
 
 
 }

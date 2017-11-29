@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${blog.title}"></title>
+</head>
+<body>
+<h1 th:text="${blog.title}"></h1>
+
+<div>
+    <p th:text="${blog.content}"></p>
+</div>
+
+<br/>
+作者:<p th:text="${blog.createBy.name}"></p>
+<br/>
+创建时间:<p th:text="${blog.createTime}"></p>
+
+<div sec:authorize="isAuthenticated()">
+    <a th:href="${'/blog/delete/'+blog.id}" th:text="删除" />
+</div>
+</body>
+</html>
