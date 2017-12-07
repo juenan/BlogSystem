@@ -4,21 +4,37 @@
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${blog.title}"></title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 th:text="${blog.title}"></h1>
+<div class="container-fluid col-offset-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center" th:text="${blog.title}"></h1>
+        </div>
+    </div>
 
-<div>
-    <p th:text="${blog.content}"></p>
-</div>
+    <div class="row">
+        <div class="col-md-8">
+            <pre><code th:text="${blog.content}"></code></pre>
+        </div>
+    </div>
 
-<br/>
-作者:<p th:text="${blog.createBy.name}"></p>
-<br/>
-创建时间:<p th:text="${blog.createTime}"></p>
+    <div class="row">
+        <div class="col-md-4">
+            作者:<p th:text="${blog.createBy.name}"></p>
+        </div>
 
-<div sec:authorize="isAuthenticated()">
-    <a th:href="${'/blog/delete/'+blog.id}" th:text="删除" />
+        <div class="col-md-4">
+            创建时间:<p th:text="${blog.createTime}"></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" sec:authorize="principal.username==#httpServletRequest.getAttribute('blog').createBy.name || hasRole('ADMIN')">
+            <a th:href="${'/blog/delete/'+blog.id}" th:text="删除" />
+        </div>
+    </div>
 </div>
 </body>
 </html>

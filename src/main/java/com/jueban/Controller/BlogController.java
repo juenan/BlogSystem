@@ -22,9 +22,10 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
+
     @RequestMapping("/delete/{id}")
-    public String deleteBlog(@PathVariable("id") Long id) {
-        blogService.deleteBlogById(id);
+    public String deleteBlog(@Valid @PathVariable("id") Long id) {
+        blogService.deleteBlog(blogService.findBlog(id));
         return "redirect:/blog";
     }
 
@@ -37,15 +38,16 @@ public class BlogController {
 
     @RequestMapping
     public String getBlogList(Model model) {
-        List<Blog> list = blogService.getAllBlog();
+        List list = blogService.getAllBlog();
         model.addAttribute("blogs", list);
         return "BlogList";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@Valid BlogDto blogDto, String username) {
+    public String create(@Valid BlogDto blogDto) {
+        String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         blogService.addBlog(blogDto, username);
-        return "redirect:/blog/edit";
+        return "redirect:/blog";
     }
 
     @RequestMapping("/edit")

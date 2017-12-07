@@ -17,7 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true,proxyTargetClass = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 

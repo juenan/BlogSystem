@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,6 +27,5 @@ public class Blog {
 
     @ManyToOne
     private User createBy;
-
 
 }

@@ -11,7 +11,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableWebMvc
 @EnableJpaRepositories(basePackages = "com.jueban.Repository")
 @SpringBootApplication
 public class Application {

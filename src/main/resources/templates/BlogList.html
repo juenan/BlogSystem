@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Blog</title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<ul th:each="blog:${blogs}">
-    <li>
-        <a th:href="${'/blog/'+blog.id}" th:text="${blog.title}"></a>
-    </li>
-</ul>
+<div th:fragment="bloglist" class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <ul th:each="blog:${blogs}">
+                <li>
+                    <a th:href="${'/blog/'+blog.id}"><h3 class="text-primary" th:text="${blog.title}"/></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" th:include="BlogForm :: edit"/>
+    </div>
+</div>
 
 </body>
 </html>

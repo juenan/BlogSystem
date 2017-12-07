@@ -6,10 +6,9 @@ import com.jueban.Entity.User;
 import com.jueban.Repository.BlogRepository;
 import com.jueban.Repository.UserRepository;
 import com.jueban.Service.BlogService;
-import org.aspectj.lang.annotation.Aspect;
-import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@EnableGlobalMethodSecurity(proxyTargetClass = true)
 public class BlogServiceImpl implements BlogService{
     @Autowired
     private UserRepository userRepository;
@@ -54,21 +54,12 @@ public class BlogServiceImpl implements BlogService{
         return blogRepository.findOne(id);
     }
 
-
-    @Override
-    public void deleteBlogById(Long id) {
-        Blog blog = blogRepository.findOne(id);
-        System.out.println(blog.getCreateBy().getName());
-        deleteBlog(blog);
-    }
-
     @PreAuthorize("principal.username==#blog.createBy.name")
     @Override
     public void deleteBlog(Blog blog){
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(user.getUsername());
         blogRepository.delete(blog.getId());
-
     }
 
 
