@@ -3,6 +3,8 @@ package com.jueban.Controller;
 import com.jueban.Dto.BlogDto;
 import com.jueban.Entity.Blog;
 import com.jueban.Service.BlogService;
+import com.jueban.Vo.BlogListVo;
+import com.jueban.Vo.BlogVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,28 +28,25 @@ public class BlogController {
     @RequestMapping("/delete/{id}")
     public String deleteBlog(@Valid @PathVariable("id") Long id) {
         blogService.deleteBlog(blogService.findBlog(id));
-        return "redirect:/blog";
+        return "redirect:/";
     }
 
     @RequestMapping("/{id}")
     public String getBlog(Model model, @PathVariable("id") Long id) {
-        Blog blog = blogService.findBlog(id);
-        model.addAttribute("blog", blog);
+        model.addAttribute("blog",blogService.findBlog(id));
         return "Blog";
     }
 
+    @ResponseBody
     @RequestMapping
-    public String getBlogList(Model model) {
-        List list = blogService.getAllBlog();
-        model.addAttribute("blogs", list);
-        return "BlogList";
+    public BlogListVo getBlogList(int blog_count, int page_count) {
+        return blogService.getBlogs(blog_count,page_count);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@Valid BlogDto blogDto) {
-        String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-        blogService.addBlog(blogDto, username);
-        return "redirect:/blog";
+        blogService.addBlog(blogDto);
+        return "redirect:/";
     }
 
     @RequestMapping("/edit")

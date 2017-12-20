@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,7 +21,7 @@ public class Blog {
     @Column
     @Type(type = "text")
     @LazyCollection(LazyCollectionOption.TRUE)
-    private String content;
+    private List<Content> content;
 
     @Column
     private String title;

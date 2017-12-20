@@ -7,38 +7,50 @@
     <meta charset="UTF-8"/>
     <title>BlogForm</title>
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-    </style>
+    <link href="/css/home.css" rel="stylesheet"/>
 </head>
 <body>
-<div th:fragment="edit" class="container-fluid well">
-    <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/blog/create}">
 
-        <div class="row">
-            <div class="col-md-8">
-                标题:
-                <input type="text" name="title" size="93"/>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="well col-md-8 col-md-offset-2" th:include="Navigation :: navigation"/>
+    </div>
+
+    <div sec:authorize="isAuthenticated()" class="row">
+        <div sec:authorize="isAuthenticated()" th:fragment="edit" class="col-md-8 col-md-offset-2 well">
+            <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/blog/create}">
+
+                <div class="row">
+                    <div class="col-md-2">
+                        标题:
+                    </div>
+                    <div class="col-md-9">
+                        <input class="col-md-12" type="text" name="title" />
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        内容:
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="col-md-12" name="content" style="width: inherit" rows="8"></textarea>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <button class="col-md-2 col-md-offset-5 btn btn-lg btn-primary" type="submit"><i class="fa fa-paper-plane"></i> 提交</button>
+                </div>
+
+            </form>
         </div>
 
-        <br/>
-
-        <div class="row">
-            <div class="col-md-4">
-                内容:
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-md-8">
-                <textarea name="content" cols="100" rows="10"></textarea>
-            </div>
-        </div>
-        <br/>
-        <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-paper-plane"></i> 提交</button>
-
-    </form>
+    </div>
 </div>
-
 </body>
 </html>

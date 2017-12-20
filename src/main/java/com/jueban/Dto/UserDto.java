@@ -1,8 +1,8 @@
 package com.jueban.Dto;
 
 import com.jueban.Entity.User;
-import com.jueban.Enum.Gender;
-import com.jueban.Enum.UserType;
+import com.jueban.utils.Enum.Gender;
+import com.jueban.utils.Enum.UserType;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 import java.util.Date;

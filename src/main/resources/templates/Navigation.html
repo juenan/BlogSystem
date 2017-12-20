@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/home.css"/>
+</head>
 <body>
 <div th:fragment="navigation">
-    <ul>
-        <li>首页</li>
-        <li>关于</li>
-        <li>博客</li>
-        <li></li>
-    </ul>
+
+    <link href="/css/home.css" rel="stylesheet"/>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-tabs">
+                <li><a href="/">首页</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/blog/edit">发布</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login">登陆</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a href="/logout">注销</a>
+                <img class="img_circle head_img" src="/head.jpg"/>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -4,20 +4,18 @@
     <meta charset="UTF-8"/>
     <title>Blog System</title>
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-        .well{
-            opacity: 0.9;
-        }
-    </style>
+    <link href="/css/home.css" rel="stylesheet"/>
+    <script src="/js/blogjs.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<div style="background: url('/bg.jpg') no-repeat;height: 1080px;">
+<div class="container-fluid">
     <div class="row">
         <div class="well col-md-8 col-md-offset-2" th:include="Navigation :: navigation"></div>
     </div>
 
     <div class="row">
-        <div class="well col-md-8 col-md-offset-2" th:include="BlogList :: bloglist"></div>
+        <div class="well col-md-8 col-md-offset-2 blog-list" th:include="BlogList :: bloglist"></div>
     </div>
 
 </div>

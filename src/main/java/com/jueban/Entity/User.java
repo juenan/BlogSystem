@@ -1,7 +1,7 @@
 package com.jueban.Entity;
 
-import com.jueban.Enum.Gender;
-import com.jueban.Enum.UserType;
+import com.jueban.utils.Enum.Gender;
+import com.jueban.utils.Enum.UserType;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;

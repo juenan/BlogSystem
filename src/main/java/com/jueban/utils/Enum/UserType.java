@@ -1,4 +1,4 @@
-package com.jueban.Enum;
+package com.jueban.utils.Enum;
 
 
 public enum UserType {

@@ -4,21 +4,29 @@
     <meta charset="UTF-8"/>
     <title>Blog</title>
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/blogjs.js"></script>
 </head>
 <body>
-<div th:fragment="bloglist" class="container-fluid">
+<div th:fragment="bloglist" class="container-fluid" style="background: url('static/bg.jpg')">
+
+    <script>
+        showBlogList();
+    </script>
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <ul th:each="blog:${blogs}">
-                <li>
-                    <a th:href="${'/blog/'+blog.id}"><h3 class="text-primary" th:text="${blog.title}"/></a>
-                </li>
-            </ul>
+        <div id="blog_list" class="col-md-8 col-md-offset-2">
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" th:include="BlogForm :: edit"/>
+        <div class="col-md-6 col-md-offset-3">
+            <button id="more" class="btn" onclick="showBlogList()">More ></button>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="row">
+        <div class="well col-md-8 col-md-offset-2" th:include="BlogForm :: edit"/>
     </div>
 </div>
 

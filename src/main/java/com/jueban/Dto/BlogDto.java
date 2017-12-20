@@ -1,7 +1,10 @@
 package com.jueban.Dto;
 
+import com.jueban.Entity.Content;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
+
+import java.util.List;
 
 @Data
 public class BlogDto {
@@ -9,5 +12,7 @@ public class BlogDto {
     public String title;
 
     @NotBlank(message = "内容不能为空")
-    public String content;
+    public List<Content> content;
+
+
 }
